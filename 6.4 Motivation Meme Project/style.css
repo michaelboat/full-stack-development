@@ -1,0 +1,25 @@
+body {
+    background-color: black;
+    font-family: serif sans-serif;
+    color: white;
+    text-align: center;
+    align-content: center;
+    font-size: x-large;
+}
+
+img {
+    text-align: center;
+    border: solid white;
+    border-width: 5px;
+    margin-top: 60px;
+    margin-bottom: 0;
+}
+
+#p1 {
+    margin: 0;
+    font-size: 3.5rem;
+}
+
+#p2 {
+    font-size: 1.3rem;
+}
