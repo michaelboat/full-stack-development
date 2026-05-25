@@ -17,23 +17,23 @@ function nextSequence(){
     // play sound for chosen tile
     var sound = new Audio('sounds/'+randColor+'.mp3');
     sound.play();
+    
+    level++;        // increase level
+    $("h1").html("Level "+ level);
 }
 
 // function to play sound when clicked
 function playSound(name){
-    // play sound for chosen tile
     var sound = new Audio('sounds/'+name+'.mp3');
     sound.play()
 }
 
 // function to animate Press
 function animatePress(currentColor){ 
-
     $("#"+currentColor).addClass("pressed");
     setTimeout(function (){
         $("#"+currentColor).removeClass("pressed")
     }, 100);
-
 }
 
 $('.btn').on("click", function() {
@@ -41,11 +41,19 @@ $('.btn').on("click", function() {
     playSound($(this).attr("id"));
 }
 )
-
 $('.btn').on('click', function () {
     var userChosenColour = $(this).attr("id");
     userClickedPattern.push(userChosenColour);
 })
 
-nextSequence()
+// GAME START AND PLAY LOGIC
+var level = 0;        // starting level
+$(document).on('keydown', function(e){
+    if (e.key === "a" || e.key === "A"){
+        nextSequence();
+        
+    }
+
+})
+
 
