@@ -1,3 +1,5 @@
+const { use } = require("react");
+
 // button colors
 var buttonColors = ["green", "red", "yellow", "blue"];
 // game pattern/sequence
@@ -21,6 +23,7 @@ function nextSequence(){
     level++;        // increase level
     $("h1").html("Level "+ level);
 }
+
 
 // function to play sound when clicked
 function playSound(name){
@@ -47,13 +50,28 @@ $('.btn').on('click', function () {
 })
 
 // GAME START AND PLAY LOGIC
+
+// validate user choice
+function checkAnswer(currentLevel){
+    
+    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+      console.log("success");
+      if (userClickedPattern.length === gamePattern.length){
+        setTimeout(function () {
+          nextSequence();
+        }, 1000);
+      }
+    } else {
+      console.log("wrong");
+    }
+}
+
 var level = 0;        // starting level
 $(document).on('keydown', function(e){
     if (e.key === "a" || e.key === "A"){
         nextSequence();
         
     }
-
 })
 
 
