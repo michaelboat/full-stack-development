@@ -14,14 +14,38 @@ function nextSequence(){
 
     // flash next chosen sequence
     $('#'+randColor).fadeOut(200).fadeIn(200);
+    // play sound for chosen tile
+    var sound = new Audio('sounds/'+randColor+'.mp3');
+    sound.play();
 }
 
+// function to play sound when clicked
+function playSound(name){
+    // play sound for chosen tile
+    var sound = new Audio('sounds/'+name+'.mp3');
+    sound.play()
+}
+
+// function to animate Press
+function animatePress(currentColor){ 
+
+    $("#"+currentColor).addClass("pressed");
+    setTimeout(function (){
+        $("#"+currentColor).removeClass("pressed")
+    }, 100);
+
+}
+
+$('.btn').on("click", function() {
+    animatePress($(this).attr("id"));
+    playSound($(this).attr("id"));
+}
+)
 
 $('.btn').on('click', function () {
     var userChosenColour = $(this).attr("id");
+    userClickedPattern.push(userChosenColour);
 })
-console.log(userChosenColour);
 
-var num = nextSequence();
-console.log(num);
+nextSequence()
 
