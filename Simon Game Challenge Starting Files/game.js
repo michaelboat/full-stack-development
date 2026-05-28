@@ -6,9 +6,16 @@ var buttonColors = ["green", "red", "yellow", "blue"];
 var gamePattern = [];
 // user clicked patter
 var userClickedPattern = [];
+var started = false;
+
 
 // function to randomly pick next tile in the sequence
 function nextSequence(){
+    var userClickedPattern = [];
+    level++;
+    $("#level-title").text("Level " + level);
+    
+
     var randonNumber = Math.floor(Math.random() * 4);
     // pick random colour
     var randColor = buttonColors[randonNumber];
@@ -70,7 +77,6 @@ var level = 0;        // starting level
 $(document).on('keydown', function(e){
     if (e.key === "a" || e.key === "A"){
         nextSequence();
-        
     }
 })
 
