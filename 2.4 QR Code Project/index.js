@@ -7,12 +7,16 @@ import inquirer from "inquirer";
 import { image } from "qr-image";
 import { writeFile } from "fs";
 
+var key = "What website would you like to generate a QR code for?"
 inquirer
-.prompt(["What website would you like to genearate a QR code for?"])
-.then((answers) => {
+.prompt([{
+    message: key,
+    name: 'url',
+}])
+.then((answers, error) => {
     if (error.isTtyError){throw error}
     else {
-        qr.image(answers);
-        fs.writeFile(answers, "users_input.txt")
+        qr.image(answers.url);
+        fs.writeFile(answers.url, "users_input.txt")
     }
 })
