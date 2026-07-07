@@ -1,17 +1,17 @@
-import express from "express";
-
+import express from "express"
 const app = express();
-const port = 1313;
+
+const PORT = 1313;  // Port we're running on
 
 app.get("/", (req, res) => {
-    // console.log(req)
-    res.send("Hello World");
+    console.log("This application is running");
+    res.send("The application works");
 });
 
-app.get("/contact", (req, res) => {
-    res.send("here's my contact info:")
-})
+app.get("/about", (req, res) => {
+    res.send("<h1>About Page</h1>");
+});
 
-app.listen(port, () => {
-    console.log(`Server has started on port ${port}`)
+app.listen(PORT, () =>{
+    console.log(`Server running on ${PORT}`);
 });
